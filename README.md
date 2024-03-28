@@ -1,2 +1,2 @@
 # Kattis
-All kattis problems I have worked on
+All kattis and contest problems I have worked on
