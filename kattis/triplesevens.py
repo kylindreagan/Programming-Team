@@ -1,0 +1,1 @@
+_,*a=open(0);print(777*all('7'in x for x in a))
