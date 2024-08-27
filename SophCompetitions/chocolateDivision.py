@@ -1,0 +1,1 @@
+print(["Alf","Beata"][eval(input().replace(" ","*"))%2])
