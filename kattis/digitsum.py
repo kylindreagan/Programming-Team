@@ -1,9 +1,31 @@
 import math
 
+def digit_sum(n, memory):
+    if n in memory:
+        return memory[n]
+    og_n = n
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    memory[og_n] = s
+    return s
+
+
+def digit_sum_precomp(limit, memory):
+    # Precompute digit sums for all numbers up to 'limit'
+    digit_sums = {x:0 for x in range(limit+1)}
+    for i in range(1, limit + 1):
+        if i < 10:
+            digit_sums[i] = (i * (i + 1)) // 2
+        else:
+            digit_sums[i] = digit_sums[i - 1] + digit_sum(i, memory)
+    return digit_sums
+
 # Sum of digits from 1 to n using a logarithmic approach
-def sumOfDigitsFrom1ToN(n):
-    if n < 10:
-        return (n * (n + 1)) // 2
+def sumOfDigitsFrom1ToN(n, mem, bound):
+    if n <= bound:
+        return mem[n]
 
     d = int(math.log10(n))  # Number of digits in n - 1
     a = [0] * (d + 2)  # Precompute sum of digits from 1 to 10^i - 1
@@ -12,14 +34,14 @@ def sumOfDigitsFrom1ToN(n):
     for i in range(2, d + 1):
         a[i] = a[i - 1] * 10 + 45 * 10 ** (i - 1)
 
-    return sumOfDigitsFrom1ToNUtil(n, a)
+    return sumOfDigitsFrom1ToNUtil(n, a, mem, bound)
 
 # Helper function to compute the sum of digits from 1 to n
-def sumOfDigitsFrom1ToNUtil(n, a):
+def sumOfDigitsFrom1ToNUtil(n, a, digit_sums, bound):
     total = 0
     while n > 0:
-        if n < 10:
-            total += (n * (n + 1)) // 2
+        if n <= bound:
+            total += digit_sums[n]
             break
 
         d = int(math.log10(n))
@@ -35,14 +57,32 @@ def sumOfDigitsFrom1ToNUtil(n, a):
     return total
 
 def main():
-    for _ in range(int(input())):
+    n = int(input())
+    ranges = [None for _ in range(n)]
+    digit_cache = {}
+    max_limit = 0
+    for i in range(n):
         x, y = map(int, input().split())
+        ranges[i] = (x,y)
+        max_limit = max(max_limit, y)
+           
+    bound = min(max_limit, 1000000)
+    digit_sums = digit_sum_precomp(bound, digit_cache)
 
-        # Handle range [x, y]
-        totalA = sumOfDigitsFrom1ToN(y)
-        if x > 0:
-            totalA -= sumOfDigitsFrom1ToN(x - 1)
+    if max_limit <= 1000000:
+        for x,y in ranges:
+            if x == 0:
+                print(digit_sums[y])
+            else:
+                print(digit_sums[y] - digit_sums[x-1])
+        quit()
 
-        print(totalA)
+    for x, y in ranges:
+        if x == 0:
+            print(sumOfDigitsFrom1ToN(y, digit_sums, bound))
+        else:
+            print(sumOfDigitsFrom1ToN(y, digit_sums, bound) -
+                  sumOfDigitsFrom1ToN(x - 1, digit_sums, bound))
 
-main()
+if __name__ == "__main__":
+    main()
