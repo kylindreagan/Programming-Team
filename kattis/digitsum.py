@@ -66,4 +66,6 @@ def main():
 
     print("\n".join(map(str, results)))
 
-main()
+if __name__ == "__main__":
+    main()
+
