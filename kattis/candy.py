@@ -2,9 +2,11 @@ from itertools import combinations
 
 def smallestComb(nums, target_sum, combination_size):
     for indices in combinations(range(len(nums)), combination_size):
-        combo_sum = sum(nums[i] for i in indices)
-        if combo_sum >= target_sum:
-            return indices
+        combo_sum = 0
+        for i in indices:
+            combo_sum += nums[i]
+            if combo_sum >= target_sum:  # Break early if we exceed target
+                return indices
     return None
 
 N, Nboxes, Sumcandy = map(int, input().split())
