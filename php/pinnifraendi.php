@@ -1,0 +1,1 @@
+<?="0.".str_pad('',intval(fgets(STDIN))-1,'0')."1\n";
