@@ -1,18 +1,17 @@
-import itertools
+from collections import Counter
 
 N,t = map(int, input().split())
 A = [int(x) for x in input().split()]
 
 if t == 1:
-    possible = [x for x in itertools.combinations(A, 2) if sum(x) == 7777]
-    if possible == []:
-        print("No")
-    else:
-        for i,j in possible:
-            if i != j:
-                print("Yes")
-                quit()
-        print("No")
+    seen = set()
+    for num in A:
+        if 7777 - num in seen and 7777 - num != num:
+            print("Yes")
+            quit()
+        seen.add(num)
+    print("No")
+
 
 elif t == 2:
     if len(A) == len(set(A)):
@@ -20,23 +19,24 @@ elif t == 2:
         quit()
     print("Contains Duplicate")
 
-elif t == 3:
-    for num in A:
-        if A.count(num) > N/2:
-            print(num)
-            quit()
-    
-    print(-1)
+if t == 3:
+    count = Counter(A)
+    majority_element = -1
+    for num, freq in count.items():
+        if freq > N // 2:
+            majority_element = num
+            break
+    print(majority_element)
 
 elif t == 4:
     A.sort()
     even = len(A)%2==0
+    mid = N//2
     if even:
-        print(A[(N//2)-1],A[(N//2)])
+        print(A[mid-1],A[(mid)])
     else:
-        print(A[N//2])
+        print(A[mid])
 
 else:
-    digit_range = [x for x in A if 999>=x and x>=100]
-    digit_range.sort()
+    digit_range = sorted(x for x in A if 100 <= x <= 999)
     print(" ".join(map(str, digit_range)))
