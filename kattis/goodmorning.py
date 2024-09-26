@@ -1,62 +1,80 @@
-#old code
-import sys
+from queue import Queue
 
-global num
-num = [[1,2,3],[4,5,6],[7,8,9],[-1,0,-1]]
+class Move:
+    def __init__(self, x, y, next) -> None:
+        self.x = x
+        self.y = y
+        self.next = next # next move: 0 = press, 1 = right, 2 = down
+    
+    def __eq__(self, other):
+        return isinstance(other, Move) and self.x == other.x and self.y == other.y and self.next == other.next
 
+    def __hash__(self):
+        return hash((self.x, self.y, self.next))
+    
+    def __repr__(self):
+        return f"({self.x}, {self.y}, {self.next})"
+        
 
-def findIndex(first):
-    for a in range(4):
-        for b in range(3):
-            if num[a][b] == first:
-                return [a, b]
-    return [9,9]
+keypad = [["1","2","3"],["4","5","6"],["7","8","9"],[None,"0",None]]
 
+def ratInAMicrowave(target, len_target):
+    closest_time = float('inf')
+    Q = Queue()
+    visited = set()  # Keep track of visited states
+    Q.put(("", Move(0,0,0)))
+    Q.put(("", Move(0,0,1)))
+    Q.put(("", Move(0,0,2)))
+    while not Q.empty():
+        curr = Q.get()
+        currvalue, currmove = curr
 
-def getPosibilites(i,j,strMin):
-    a = num[i][j]
-    ls = [a]
-    if i+1<4:
-        b = num[i+1][j]
-        if b==-1:
-            ls.append(b)
-    if j+1<3:
-        c = num[i][j+1]
-        if c == -1:
-            ls.append(c)
-    if i+1<4 and j+1<3:
-        d = num[i+1][j+1]
-        if d == -1:
-            ls.append(d)
-    return ls
+        if currvalue != "" and int(currvalue) == target:
+            return currvalue
+        
+        currx, curry = currmove.x, currmove.y
 
-def getClosest(posi, strMin, index):
-    current = int(strMin[:index+1])
-    acum = strMin[:index]
-    a = [int(acum+str(p)) if p > 0 else int(acum+str(0)) for p in posi]
-    closest = sys.maxsize
-    for s in a:
-        if abs(current-s)<abs(current-closest):
-            closest=s
-    return closest
+        match currmove.next:
+            #PRESS
+            case 0:
+                new_value = currvalue + keypad[curry][currx]
+                intval = int(new_value)
 
+                if abs(target-intval)<=abs(target-closest_time):
+                    closest_time = intval
+                
+                if len(new_value) <= len_target:
+                    if (new_value, (currx, curry)) not in visited:
+                        visited.add((new_value, (currx, curry)))
+                        Q.put((new_value, Move(currx,curry,0)))
+                        Q.put((new_value, Move(currx,curry,1)))
+                        Q.put((new_value, Move(currx,curry,2)))
+            #RIGHT
+            case 1:
+                if keypad[curry][currx] != "0" and currx + 1 < len(keypad[0]):
+                    if (new_value, (currx + 1, curry)) not in visited:
+                        Q.put((currvalue, Move(currx+1,curry,0)))
+                        Q.put((currvalue, Move(currx+1,curry,1)))
+                        Q.put((currvalue, Move(currx+1,curry,2)))
+            #DOWN
+            case 2:
+                if keypad[curry][currx] != "0":
+                    if keypad[curry+1][currx] != None:
+                        if (new_value, (currx, curry+1)) not in visited:
+                            Q.put((currvalue, Move(currx,curry+1,0)))
+                            Q.put((currvalue, Move(currx,curry+1,1)))
+                            Q.put((currvalue, Move(currx,curry+1,2)))
 
-def solution(min):
-    strMin = str(min)
-    a = int(strMin[0])
-    currentNumber = str(a)
-    for index in range(1,len(str(min))):
-        i,j = findIndex(a)
-        a = int(strMin[index])
-        k,s = findIndex(a)
-        if i<=k and j<=s:
-            currentNumber+=str(a)
+    return closest_time
+
+def main():
+    for _ in range(int(input())):
+        target = int(input())
+        len_target = len(str(target))
+        if len_target == 1:
+            print(target)
         else:
-            posi = getPosibilites(i,j,strMin)
-            currentNumber=getClosest(posi,strMin,index)
-        i,j=k,s
-    return currentNumber
+            print(ratInAMicrowave(target, len_target))
 
-for _ in range(int(input())):
-    min = int(input())
-    print(solution(min))
+if __name__ == "__main__":
+    main()

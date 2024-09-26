@@ -1,4 +1,3 @@
-import math
 from collections import defaultdict
 
 def precompute_sums(max_digit):
@@ -36,15 +35,6 @@ def sumOfDigitsFrom1ToN(n, a, mem):
 def get_log10(x):
     return len(str(x))-1
 
-def get_log102(x):
-    log10_cache = defaultdict(int)
-    if x in log10_cache:
-        return log10_cache[x]
-    result = int(math.log10(x))
-    log10_cache[x] = result
-    return result
-
-
 def main():
     n = int(input())
     a = precompute_sums(15)
@@ -68,4 +58,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
