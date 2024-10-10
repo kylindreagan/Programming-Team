@@ -1,6 +1,7 @@
 import operator
 operators = {'+': operator.add, '-': operator.sub, '*': operator.mul}
 
+#https://www.geeksforgeeks.org/python-program-for-basic-and-extended-euclidean-algorithms-2/
 def gcdExtended(a, b): 
     # Base Case 
     if a == 0 : 
