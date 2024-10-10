@@ -2,7 +2,7 @@ def find_awkwardness(people_list):
     language_positions = {}
     
     # Group people by language with their indices
-    for index, language in enumerate(people_l):
+    for index, language in enumerate(people_list):
         if language not in language_positions:
             language_positions[language] = []
         language_positions[language].append(index)
@@ -14,7 +14,7 @@ def find_awkwardness(people_list):
                 distance = positions[i] - positions[i - 1]
                 min_distance = min(min_distance, distance)
 
-    return min_distance if min_distance != float('inf') else len(people_l)
+    return min_distance if min_distance != float('inf') else len(people_list)
 
 def main():
     p = int(input())
