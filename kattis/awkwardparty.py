@@ -17,7 +17,7 @@ def find_awkwardness(people_list):
     return min_distance if min_distance != float('inf') else len(people_list)
 
 def main():
-    p = int(input())
+    _ = int(input())
     people_list = input().split()
     
     print(find_awkwardness(people_list))
