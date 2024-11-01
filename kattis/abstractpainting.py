@@ -1,1 +1,0 @@
-[print((18*6**(R+C-2)*2**((R-1)*(C-1)))%(10**9+7)) for _ in range(int(input())) for R,C in [map(int,input().split())]]
