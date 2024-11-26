@@ -1,1 +1,1 @@
-print(str(int(((n:=int(input()))*(n+1))/2))+"\n"+str(int(sum((x*(x+1))/2 for x in range(1,n+1)))))
+n=int(input());print(s:=n*n+n>>1,s*(n+2)//3,sep="\n")
