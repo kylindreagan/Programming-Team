@@ -3,7 +3,7 @@ class Solution:
         if x == 0 or x == 1:
             return x
         low = 2
-        high = 2**31 - 1
+        high = x
         mid = low + (high-low) // 2
         while low <= high:
             curr = mid * mid
