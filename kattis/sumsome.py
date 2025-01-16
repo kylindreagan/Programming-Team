@@ -1,0 +1,1 @@
+print("Either"if(n:=int(input())-1)%2==0 else"Odd"if n%4==1 else"Even")
