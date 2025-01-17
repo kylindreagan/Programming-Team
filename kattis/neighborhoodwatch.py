@@ -6,6 +6,7 @@ def calculate_safety_rating(n:int, k:int, watch_houses: List[bool]) -> int:
     safety_rating = n*(n+1)//2
     curr_unsafe = 0
 
+    #Take max safety rating, remove all unsafe paths
     for house in range(n):
         if not watch_houses[house]:
             curr_unsafe += 1
