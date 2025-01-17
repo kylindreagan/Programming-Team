@@ -1,5 +1,5 @@
 from typing import List
-def calculate_safety_rating(n:int, k:int, watch_houses: List[bool]):
+def calculate_safety_rating(n:int, k:int, watch_houses: List[bool]) -> int:
     if k == 0:
         return 0  # No walk is safe if there are no watch houses
 
