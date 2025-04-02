@@ -5,21 +5,23 @@ def TransBFS(graph, start):
     min_cost = float('inf')
     min_steps = float('inf')
     visited = set()
-    #cost, steps, language
+    #steps, cost, language
     pq = [(0, 0, start)]
     while pq:
-        cost, steps, language = heapq.heappop(pq)
-        for neighbor, distance in graph[language]:
-            if neighbor in starts:
-                next_cost = cost + distance
-            else:
-                 next_cost = cost
-            if steps + 1 < min_steps or (steps + 1 == min_steps and next_cost < min_cost):
+        steps, cost, language = heapq.heappop(pq)
+        for neighbor, neighcost in graph[language]:
+            next_cost = cost
+            if neighbor == "English":
+               next_cost += neighcost
+            if steps < min_steps or (steps == min_steps and next_cost < min_cost):
                     if neighbor == "English":
                         min_steps = steps
-                        min_cost = next_cost
+                        if min_steps == steps:
+                            min_cost = min(min_cost, next_cost)
+                        else:
+                            min_cost = cost
                     else:
-                         heapq.heappush(pq, (next_cost, steps + 1, neighbor))
+                         heapq.heappush(pq, (steps + 1, next_cost, neighbor))
     
     return min_cost
 
@@ -37,9 +39,11 @@ for start in starts:
           curr_cost = 0
      else:
         curr_cost = TransBFS(graph, start)
+     
      if curr_cost == float('inf'):
           print("Impossible")
           quit()
+     
      total_cost += curr_cost
 
 print(total_cost)
