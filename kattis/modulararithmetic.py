@@ -1,20 +1,15 @@
 import operator
 operators = {'+': operator.add, '-': operator.sub, '*': operator.mul}
 
-#https://www.geeksforgeeks.org/python-program-for-basic-and-extended-euclidean-algorithms-2/
-def gcdExtended(a, b): 
-    # Base Case 
-    if a == 0 : 
-        return b,0,1
-             
-    gcd,x1,y1 = gcdExtended(b%a, a) 
-     
-    # Update x and y using results of recursive 
-    # call 
-    x = y1 - (b//a) * x1 
-    y = x1 
-     
-    return gcd,x,y 
+def gcdExtended(a,b):
+    x,y,u,v=0,1,1,0
+    while a != 0:
+        q,r = b//a,b%a
+        m,n=x-u*q,y-v*q
+        b,a,x,y,u,v,=a,r,u,v,m,n
+    gcd = b 
+    return gcd, x, y
+
 
 def modOp(b,m,a):
     d, x, y = gcdExtended(b, m)
