@@ -30,7 +30,7 @@ To explore or run the code:
 1. **Clone the repository**
 ```bash
 git clone https://github.com/kylindreagan/Programming-Team
-cd cProgramming-Team
+cd Programming-Team
 
 
 
