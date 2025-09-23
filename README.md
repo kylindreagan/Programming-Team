@@ -29,8 +29,8 @@ To explore or run the code:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/college-programming-team.git
-cd college-programming-team
+git clone https://github.com/kylindreagan/Programming-Team
+cd cProgramming-Team
 
 
 
