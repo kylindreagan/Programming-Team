@@ -4,7 +4,7 @@
 Welcome to my **college programming team archive**! :>
 This repository contains the code, solutions, and notes from my years participating in competitive programming and team projects. It’s meant to showcase my growth, problem-solving skills, and experience tackling a wide variety of algorithmic challenges.
 
-The content spans multiple languages, paradigms, and problem types—from **data structures and algorithms** to **optimization and system design exercises**.
+The content spans multiple languages (mostly python), paradigms, and problem types—from **data structures and algorithms** to **optimization and system design exercises**.
 
 ---
 
