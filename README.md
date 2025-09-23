@@ -17,6 +17,13 @@ During my time on the team, I aimed to:
 
 ---
 
+## Notes
+- Some solutions reflect team collaboration, so coding style may vary between files.
+
+- This repo is meant for educational purposes, sharing techniques, patterns, and inspiration for learning algorithms.
+
+---
+
 ## Getting Started
 To explore or run the code:
 
@@ -25,10 +32,5 @@ To explore or run the code:
 git clone https://github.com/your-username/college-programming-team.git
 cd college-programming-team
 
----
 
-## Notes
-- Some solutions reflect team collaboration, so coding style may vary between files.
-
-- This repo is meant for educational purposes, sharing techniques, patterns, and inspiration for learning algorithms.
 
