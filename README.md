@@ -22,6 +22,8 @@ During my time on the team, I aimed to:
 
 - This repo is meant for educational purposes, sharing techniques, patterns, and inspiration for learning algorithms.
 
+- Most of the problems come from the programming contest **kattis** (https://open.kattis.com/)
+
 ---
 
 ## Getting Started
