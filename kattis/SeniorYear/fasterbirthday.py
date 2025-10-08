@@ -35,8 +35,6 @@ while True:
     for i in range(p):
         if not visited[i]:
             tarjandfs(i, -1)
-
-    print(bridges)
     if bridges:
         print("Yes")
     else:
