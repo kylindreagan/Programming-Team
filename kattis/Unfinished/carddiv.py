@@ -1,10 +1,3 @@
-def sum_digits3(n):
-   r = 0
-   while n:
-       r, n = r + n % 10, n // 10
-   return r
-
-n, m = map(int, ma)
+n, m = map(int, input().split())
 x = "".join(str(i) for i in range(n, m + 1))
-
-print(sum_digits3(int(x)))
+print(sum(int(c) for c in x)%9)
