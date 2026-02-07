@@ -1,33 +1,42 @@
-from itertools import combinations
+import heapq
 
-def smallestComb(nums, target_sum, combination_size):
-    for indices in combinations(range(len(nums)), combination_size):
-        combo_sum = 0
-        for i in indices:
-            combo_sum += nums[i]
-            if combo_sum >= target_sum:  # Break early if we exceed target
-                return indices
-    return None
+def min_swaps_to_front(boxes, F, T):
+    N = len(boxes)
 
-N, Nboxes, Sumcandy = map(int, input().split())
-boxes = [int(x) for x in input().split()]
-ogBox = sum(boxes[:Nboxes])
+    indexed = [(boxes[i], i) for i in range(N)]
 
-if ogBox >= Sumcandy:
+    indexed.sort(reverse=True)
+
+    chosen = []
+    candy_sum = 0
+    index_sum = 0
+
+    best_cost = float('inf')
+
+    for candy, idx in indexed:
+        heapq.heappush(chosen, (-idx, candy))
+        candy_sum += candy
+        index_sum += idx
+
+        if len(chosen) > F:
+            neg_idx, removed_candy = heapq.heappop(chosen)
+            index_sum -= -neg_idx
+            candy_sum -= removed_candy
+
+        if len(chosen) == F and candy_sum >= T:
+            cost = index_sum - F * (F - 1) // 2
+            best_cost = min(best_cost, cost)
+
+    return best_cost if best_cost != float('inf') else None
+
+N, F, T = map(int, input().split())
+boxes = list(map(int, input().split()))
+
+if sum(boxes[:F]) >= T:
     print(0)
-elif N == Nboxes:
-    print("NO")
-elif Nboxes == 1:
-    valid = [i for i, y in enumerate(boxes) if y >= Sumcandy]
-    if not valid:
-        print("NO")
-    else:
-        print(valid[0])
 else:
-    winning_combination = smallestComb(boxes, Sumcandy, Nboxes)
-    if winning_combination is None:
+    ans = min_swaps_to_front(boxes, F, T)
+    if ans is None:
         print("NO")
     else:
-        # Calculate the difference between the found indices and the first Nboxes indices
-        result = sum(winning_combination) - sum(range(Nboxes))
-        print(result)
+        print(ans)
