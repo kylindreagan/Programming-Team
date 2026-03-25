@@ -60,6 +60,5 @@ for i in range(n):
 
 if DFA_finite(travel_dict, alphabet, s, final, n):
     print("finite")
-
 else:
     print("infinite")
