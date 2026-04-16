@@ -22,6 +22,6 @@ During my time on the team, I aimed to:
 
 - This repo is meant for educational purposes, sharing techniques, patterns, and inspiration for learning algorithms.
 
-- Most of the problems come from the programming contest **kattis** (https://open.kattis.com/)
+- Most of the problems come from the programming contest **kattis** (https://open.kattis.com/), others might come from **UVa Judge** (https://onlinejudge.org/) or **LeetCode** (https://leetcode.com/).
 
 ---
