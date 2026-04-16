@@ -8,7 +8,7 @@ def normalize(a, b, c):
         a //= gcd
         b //= gcd
     
-    # Canonicalize: make first non-zero positive
+    # Canonicalize (Make first non-zero positive)
     if a < 0 or (a == 0 and b < 0):
         a, b, c = -a, -b, -c
     
@@ -52,7 +52,7 @@ def solve():
             B //= gcd
             C //= gcd
         
-        # Canonicalize: make first non-zero positive
+        # Canonicalize
         if A < 0 or (A == 0 and B < 0):
             A, B, C = -A, -B, -C
         
@@ -97,7 +97,6 @@ def solve():
         for i in range(m1):
             for j in range(i + 1, m1):
                 # For normalized lines ax+by+c=0 with a²+b²=1, distance is |c2-c1|
-                # But we're using integer coefficients, so we need to normalize
                 dist = abs(lines1[j] - lines1[i])
                 dist_count1[dist] += 1
         
