@@ -25,14 +25,3 @@ During my time on the team, I aimed to:
 - Most of the problems come from the programming contest **kattis** (https://open.kattis.com/)
 
 ---
-
-## Getting Started
-To explore or run the code:
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/kylindreagan/Programming-Team
-cd Programming-Team
-
-
-
