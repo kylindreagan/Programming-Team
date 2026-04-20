@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/safe
 from queue import Queue
 from copy import deepcopy
 

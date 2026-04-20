@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/runningmom
 from collections import defaultdict
 
 graph = defaultdict(set)

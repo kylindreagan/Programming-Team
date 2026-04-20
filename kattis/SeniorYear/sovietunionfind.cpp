@@ -4,6 +4,8 @@
 #include <cstring>
 #include <unistd.h>
 
+//https://open.kattis.com/problems/sovietunionfind
+
 class FastIO {
 private:
     static constexpr int BUFFER_SIZE = 1 << 16;

@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/alphabetanimals
 animal = input()
 start = animal[-1]
 alphabet = {chr(i): 0 for i in range(97, 123)}

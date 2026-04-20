@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/dfaisempty
 from queue import Queue
 
 def DFA_empty(dfa, symbols, s, f, n):

@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/dfaisfinite
 from queue import Queue
 
 def DFA_finite(dfa, symbols, start, final_states, n):

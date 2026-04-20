@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/astrologicalsign
 def starSign(month: str, day: int) -> str:
     signs = [
         (1, 21, "Aquarius"),

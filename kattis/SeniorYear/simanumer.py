@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/simanumer
 class BST:
     def __init__(self):
         self.root = None

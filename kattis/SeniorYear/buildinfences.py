@@ -1,5 +1,4 @@
-import sys
-
+#https://open.kattis.com/problems/buildinfences
 def get_safe_integer_aabb(points):
     if not points:
         return None

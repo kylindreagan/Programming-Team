@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/10kindsofpeople
 from collections import deque
 
 directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]# LEFT, RIGHT, UP, DOWN

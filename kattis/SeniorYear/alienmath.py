@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/alienmath
 import re
 n = int(input())
 digits = {c:i for i, c in enumerate(input().split())}

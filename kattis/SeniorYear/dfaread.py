@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/dfaread
 def DFA_BFS(dfa, word, s, f):
     curr = s
     for letter in word:

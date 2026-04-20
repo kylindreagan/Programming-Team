@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/calculator
 while True:
     try:
         eq = input()

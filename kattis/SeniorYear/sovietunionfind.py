@@ -1,3 +1,4 @@
+#https://open.kattis.com/problems/sovietunionfind
 import sys
 
 class UFDS:
